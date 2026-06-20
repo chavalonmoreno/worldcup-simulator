@@ -5,23 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulador Mundial 2026</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/css/flag-icons.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <header class="header">
-    <h1>🏆 Simulador Mundial 2026</h1>
-    <p>Predice los partidos restantes y descubre quién será campeón.</p>
+    <h1>Simulador Mundial <span class="year">2026</span></h1>
+    <p>Completa los marcadores — el bracket se actualiza automáticamente</p>
 </header>
 
 <div class="actions">
-    <button id="simulateBtn">
-        Simular Mundial
-    </button>
-
-    <button id="resetBtn">
-        Reiniciar Predicciones
-    </button>
+    <button id="simulateBtn">Calcular Standings</button>
+    <button id="resetBtn">Reiniciar</button>
 </div>
 
 <main>
@@ -129,27 +129,27 @@
 
         <div class="team-row">
 
-            <span class="team-name home-name">
-                Local
-            </span>
+            <span class="team-name home-name">Local</span>
 
             <input
                 class="score-input home-score"
                 type="number"
-                min="0">
+                min="0"
+                max="30"
+                step="1">
 
         </div>
 
         <div class="team-row">
 
-            <span class="team-name away-name">
-                Visitante
-            </span>
+            <span class="team-name away-name">Visitante</span>
 
             <input
                 class="score-input away-score"
                 type="number"
-                min="0">
+                min="0"
+                max="30"
+                step="1">
 
         </div>
 
@@ -164,20 +164,13 @@
 <template id="knockoutMatchTemplate">
 
     <div class="knockout-match">
-
-        <div class="team knockout-home">
-            TBD
-        </div>
-
-        <div class="team knockout-away">
-            TBD
-        </div>
-
+        <div class="team knockout-home">TBD</div>
+        <div class="team knockout-away">TBD</div>
     </div>
 
 </template>
 
-<script src="app.js"></script>
+<script type="module" src="app.js"></script>
 
 </body>
 </html>
