@@ -1,0 +1,30 @@
+{
+    "teams": [
+        {
+            "MEX": {
+            "name": "México",
+            "group": "A",
+            "fifaRanking": 15
+            }
+        }
+    ]
+         
+    
+    ,
+    "matches" : [
+        {
+            "id": "A1",
+            "stage": "group",
+            "group": "A",
+            "home": "MEX",
+            "away": "RSA",
+            "homeScore": 2,
+            "awayScore": 0,
+            "isReal": true,
+            "fairPlay": {
+              "MEX": { "Y": 1, "R": 1 },
+              "RSA": { "Y": 2, "R": 2 }
+            }
+        }
+    ]
+}
