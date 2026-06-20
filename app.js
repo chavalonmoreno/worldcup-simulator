@@ -1,156 +1,658 @@
-let tournamentData = {};
-let simulator = null;
+let data;
 
-async function initApplication() {
-  try {
-    const response = await fetch('./data.json');
-    tournamentData = await response.json();
-    
-    // Cargar predicciones previas guardadas en el navegador del usuario
-    loadLocalStoragePredictions();
+document.addEventListener("DOMContentLoaded", async () => {
 
-    simulator = new WorldCupSimulator(tournamentData);
-    
-    renderGroupsUI();
-    renderEverything();
-    setupEventListeners();
-  } catch (error) {
-    console.error("Error cargando los datos del simulador:", error);
-  }
+    await loadData();
+
+    renderGroups();
+
+    document
+        .getElementById("simulateBtn")
+        .addEventListener("click", simulate);
+
+});
+
+async function loadData() {
+
+    const response = await fetch("data.json");
+
+    data = await response.json();
+
 }
 
-function loadLocalStoragePredictions() {
-  const saved = localStorage.getItem('wc_2026_sim_cache');
-  if (saved) {
-    const cachedScores = JSON.parse(saved);
-    tournamentData.matches.forEach(m => {
-      // Solo restaurar si el partido NO es un resultado real oficializado
-      if (!m.isReal && cachedScores[m.id]) {
-        m.homeScore = cachedScores[m.id].homeScore;
-        m.awayScore = cachedScores[m.id].awayScore;
-      }
+function renderGroups() {
+
+    const container = document.getElementById("groups-container");
+
+    container.innerHTML = "";
+
+    const groups = [...new Set(
+        Object.values(data.teams)
+            .map(team => team.group)
+    )].sort();
+
+    groups.forEach(group => {
+
+        const template = document
+            .getElementById("groupTemplate")
+            .content
+            .cloneNode(true);
+
+        template.querySelector(".group-name").textContent =
+            `Grupo ${group}`;
+
+        const matchesContainer =
+            template.querySelector(".matches-container");
+
+        renderMatches(group, matchesContainer);
+
+        container.appendChild(template);
+
     });
-  }
+
 }
 
-function savePredictionsToStorage() {
-  const dataToSave = {};
-  tournamentData.matches.forEach(m => {
-    if (!m.isReal) {
-      dataToSave[m.id] = { homeScore: m.homeScore, awayScore: m.awayScore };
+function renderMatches(group, container) {
+
+    const matches = data.matches.filter(
+        m => m.group === group
+    );
+
+    matches.forEach(match => {
+
+        const card = document
+            .getElementById("matchTemplate")
+            .content
+            .cloneNode(true);
+
+        card.querySelector(".match-id").textContent =
+            match.id;
+
+        card.querySelector(".home-name").textContent =
+            data.teams[match.home].name;
+
+        card.querySelector(".away-name").textContent =
+            data.teams[match.away].name;
+
+        const homeInput =
+            card.querySelector(".home-score");
+
+        const awayInput =
+            card.querySelector(".away-score");
+
+        homeInput.id = `home-${match.id}`;
+        awayInput.id = `away-${match.id}`;
+
+        if (match.isReal) {
+
+            homeInput.value = match.homeScore;
+            awayInput.value = match.awayScore;
+
+            homeInput.disabled = true;
+            awayInput.disabled = true;
+
+        }
+
+        container.appendChild(card);
+
+    });
+
+}
+
+function getMatchScore(match) {
+
+    if (match.isReal) {
+
+        return {
+            home: match.homeScore,
+            away: match.awayScore
+        };
+
     }
-  });
-  localStorage.setItem('wc_2026_sim_cache', JSON.stringify(dataToSave));
+
+    const home =
+        document.getElementById(`home-${match.id}`).value;
+
+    const away =
+        document.getElementById(`away-${match.id}`).value;
+
+    return {
+
+        home: home === "" ? null : Number(home),
+        away: away === "" ? null : Number(away)
+
+    };
+
 }
 
-function renderGroupsUI() {
-  const container = document.getElementById('groups-grid');
-  container.innerHTML = '';
+function simulate(){
 
-  // Agrupar partidos por su letra de grupo
-  const matchesByGroup = {};
-  tournamentData.matches.forEach(m => {
-    if (!matchesByGroup[m.group]) matchesByGroup[m.group] = [];
-    matchesByGroup[m.group].push(m);
-  });
+    savePredictions();
 
-  Object.keys(matchesByGroup).forEach(groupLetter => {
-    const card = document.createElement('div');
-    card.className = 'group-card';
-    card.innerHTML = `
-      <h3>Grupo ${groupLetter}</h3>
-      <div class="matches-list" id="matches-list-${groupLetter}"></div>
-      <table class="group-table">
-        <thead>
-          <tr><th>Pos</th><th>Equipo</th><th>Pts</th><th>DG</th></tr>
-        </thead>
-        <tbody id="table-body-${groupLetter}"></tbody>
-      </table>
-    `;
-    container.appendChild(card);
+    const standingsByGroup = {};
 
-    const matchesList = document.getElementById(`matches-list-${groupLetter}`);
-    matchesByGroup[groupLetter].forEach(m => {
-      const homeTeam = tournamentData.teams[m.home];
-      const awayTeam = tournamentData.teams[m.away];
+    groups.forEach(group => {
 
-      const matchRow = document.createElement('div');
-      matchRow.className = `match-row ${m.isReal ? 'real' : ''}`;
-      matchRow.dataset.matchId = m.id;
-      matchRow.innerHTML = `
-        <span class="team-label home">${homeTeam.name}</span>
-        <input type="number" class="score-input" data-team="${m.home}" 
-               value="${m.homeScore !== null ? m.homeScore : ''}" ${m.isReal ? 'disabled' : ''} min="0">
-        <span class="vs-separator">-</span>
-        <input type="number" class="score-input" data-team="${m.away}" 
-               value="${m.awayScore !== null ? m.awayScore : ''}" ${m.isReal ? 'disabled' : ''} min="0">
-        <span class="team-label away">${awayTeam.name}</span>
-      `;
-      matchesList.appendChild(matchRow);
+        standingsByGroup[group] =
+            calculateGroupTable(group);
+
     });
-  });
+
+    const rankedThirds =
+        rankThirdPlaces(
+            standingsByGroup
+        );
+
+    const round32 =
+        generateRound32(
+            standingsByGroup,
+            rankedThirds
+        );
+
+    const round16 =
+        generateRound16(
+            round32
+        );
+
+    const quarterFinals =
+        generateQuarterFinals(
+            round16
+        );
+
+    const semiFinals =
+        generateSemiFinals(
+            quarterFinals
+        );
+
+    const finals =
+        generateFinal(
+            semiFinals
+        );
+
 }
 
-function setupEventListeners() {
-  document.querySelectorAll('.score-input').forEach(input => {
-    input.addEventListener('input', (e) => {
-      const row = e.target.closest('.match-row');
-      const matchId = row.dataset.matchId;
-      const teamCode = e.target.dataset.team;
-      const val = e.target.value === "" ? null : parseInt(e.target.value);
+function calculateGroupTable(group) {
 
-      const match = tournamentData.matches.find(m => m.id === matchId);
-      if (match) {
-        if (match.home === teamCode) match.homeScore = val;
-        if (match.away === teamCode) match.awayScore = val;
-      }
+    let table = {};
 
-      savePredictionsToStorage();
-      renderEverything();
+    Object.entries(data.teams)
+        .filter(([_, t]) => t.group === group)
+        .forEach(([code, team]) => {
+
+            table[code] = {
+
+                code,
+                name: team.name,
+                fifaRanking: team.fifaRanking,
+
+                points: 0,
+                gf: 0,
+                ga: 0,
+                gd: 0,
+
+                wins: 0,
+                draws: 0,
+                losses: 0,
+
+                fairPlay: 0
+
+            };
+
+        });
+
+    const matches =
+        data.matches.filter(m => m.group === group);
+
+    matches.forEach(match => {
+
+        const score = getMatchScore(match);
+
+        if (
+            score.home === null ||
+            score.away === null
+        ) return;
+
+        const home = table[match.home];
+        const away = table[match.away];
+
+        home.gf += score.home;
+        home.ga += score.away;
+
+        away.gf += score.away;
+        away.ga += score.home;
+
+        if (score.home > score.away) {
+
+            home.points += 3;
+            home.wins++;
+
+            away.losses++;
+
+        }
+        else if (score.home < score.away) {
+
+            away.points += 3;
+            away.wins++;
+
+            home.losses++;
+
+        }
+        else {
+
+            home.points++;
+            away.points++;
+
+            home.draws++;
+            away.draws++;
+
+        }
+
+        home.fairPlay += calculateFairPlay(
+            match.fairPlay?.[match.home]
+        );
+
+        away.fairPlay += calculateFairPlay(
+            match.fairPlay?.[match.away]
+        );
+
     });
-  });
+
+    Object.values(table)
+        .forEach(team => {
+
+            team.gd = team.gf - team.ga;
+
+        });
+
+    return applyTieBreakers(
+        Object.values(table),
+        matches
+    );
+
 }
 
-function renderEverything() {
-  const tables = simulator.buildTables();
-  const sortedGroups = {};
+function calculateFairPlay(fp) {
 
-  Object.keys(tables).forEach(groupLetter => {
-    const teamsArray = Object.values(tables[groupLetter]);
-    sortedGroups[groupLetter] = simulator.sortGroup(teamsArray);
-    
-    // Renderizar los cambios de posición en caliente
-    const tbody = document.getElementById(`table-body-${groupLetter}`);
-    if (tbody) {
-      tbody.innerHTML = sortedGroups[groupLetter].map((team, index) => `
-        <tr>
-          <td>${index + 1}</td>
-          <td><strong>${team.name}</strong></td>
-          <td>${team.Pts}</td>
-          <td>${team.GD >= 0 ? '+' + team.GD : team.GD}</td>
-        </tr>
-      `).join('');
+    if (!fp) return 0;
+
+    return (
+
+        fp.Y * -1 +
+        fp.YR * -3 +
+        fp.IR * -4 
+
+    );
+
+}
+
+function applyTieBreakers(teams, matches) {
+
+    return teams.sort((a, b) => {
+
+        if (b.points !== a.points)
+            return b.points - a.points;
+
+        if (b.gd !== a.gd)
+            return b.gd - a.gd;
+
+        if (b.gf !== a.gf)
+            return b.gf - a.gf;
+
+        const headToHead =
+            compareHeadToHead(
+                a.code,
+                b.code,
+                matches
+            );
+
+        if (headToHead !== 0)
+            return headToHead;
+
+        if (a.fairPlay !== b.fairPlay)
+            return b.fairPlay - a.fairPlay;
+
+        return a.fifaRanking - b.fifaRanking;
+
+    });
+
+}
+
+function compareHeadToHead(team1, team2, matches) {
+
+    const match = matches.find(m =>
+        (m.home === team1 && m.away === team2) ||
+        (m.home === team2 && m.away === team1)
+    );
+
+    if (!match)
+        return 0;
+
+    const score = getMatchScore(match);
+
+    let t1;
+    let t2;
+
+    if (match.home === team1) {
+
+        t1 = score.home;
+        t2 = score.away;
+
+    } else {
+
+        t1 = score.away;
+        t2 = score.home;
+
     }
-  });
 
-  const bestThirds = simulator.getBestThirdPlaces(sortedGroups);
-  const bracketMatches = simulator.getRoundOf32Matches(sortedGroups, bestThirds);
-  
-  // Renderizar las llaves finales
-  const bracketContainer = document.getElementById('round-of-32');
-  if (bracketContainer) {
-    bracketContainer.innerHTML = bracketMatches.map(m => `
-      <div class="match-slot">
-        <div class="match-slot-title">${m.title}</div>
-        <div class="bracket-team">
-          <span>${m.home ? m.home.name : 'Por definir'}</span>
-        </div>
-        <div class="bracket-team">
-          <span>${m.away ? m.away.name : 'Por definir'}</span>
-        </div>
-      </div>
-    `).join('');
-  }
+    if (t1 > t2)
+        return -1;
+
+    if (t1 < t2)
+        return 1;
+
+    return 0;
+
 }
 
-document.addEventListener('DOMContentLoaded', initApplication);
+function rankThirdPlaces(standingsByGroup) {
+
+    let thirds = [];
+
+    Object.values(standingsByGroup)
+        .forEach(group => {
+
+            thirds.push(group[2]);
+
+        });
+
+    return thirds.sort((a, b) => {
+
+        if (b.points !== a.points)
+            return b.points - a.points;
+
+        if (b.gd !== a.gd)
+            return b.gd - a.gd;
+
+        if (b.gf !== a.gf)
+            return b.gf - a.gf;
+
+        if (a.fairPlay !== b.fairPlay)
+            return b.fairPlay - a.fairPlay;
+
+        return a.fifaRanking - b.fifaRanking;
+
+    });
+
+}
+
+function savePredictions() {
+
+    let predictions = {};
+
+    data.matches
+        .filter(match => !match.isReal)
+        .forEach(match => {
+
+            predictions[match.id] = {
+
+                homeScore:
+                    document.getElementById(
+                        `home-${match.id}`
+                    )?.value,
+
+                awayScore:
+                    document.getElementById(
+                        `away-${match.id}`
+                    )?.value
+
+            };
+
+        });
+
+    localStorage.setItem(
+        "worldcup_predictions",
+        JSON.stringify(predictions)
+    );
+
+}
+
+
+function resetPredictions() {
+
+    localStorage.removeItem(
+        "worldcup_predictions"
+    );
+
+    location.reload();
+
+}
+
+function loadPredictions() {
+
+    const predictions = JSON.parse(
+        localStorage.getItem(
+            "worldcup_predictions"
+        )
+    );
+
+    if (!predictions)
+        return;
+
+    Object.entries(predictions)
+        .forEach(([id, prediction]) => {
+
+            const home =
+                document.getElementById(
+                    `home-${id}`
+                );
+
+            const away =
+                document.getElementById(
+                    `away-${id}`
+                );
+
+            if (home)
+                home.value =
+                    prediction.homeScore;
+
+            if (away)
+                away.value =
+                    prediction.awayScore;
+
+        });
+
+}
+
+const firsts = [];
+const seconds = [];
+const thirds = [];
+
+function generateRound32(
+    standingsByGroup,
+    rankedThirds
+) {
+
+    const firsts = [];
+    const seconds = [];
+
+    Object.values(standingsByGroup)
+        .forEach(group => {
+
+            firsts.push(group[0]);
+
+            seconds.push(group[1]);
+
+        });
+
+    const qualifiedThirds =
+        rankedThirds.slice(0, 8);
+
+    return [
+
+        {
+            home: firsts[0],
+            away: qualifiedThirds[7]
+        },
+
+        {
+            home: seconds[0],
+            away: seconds[11]
+        }
+
+        // continuar con las 16 llaves
+    ];
+
+}
+
+function winner(match){
+
+    if(match.homeScore > match.awayScore)
+        return match.home;
+
+    return match.away;
+
+}
+
+function generateRound16(round32){
+
+    return [
+
+        {
+            home:
+                winner(round32[0]),
+
+            away:
+                winner(round32[1])
+
+        },
+
+        {
+            home:
+                winner(round32[2]),
+
+            away:
+                winner(round32[3])
+
+        }
+
+    ];
+
+}
+
+function generateQuarterFinals(round16){
+
+    return [
+
+        {
+            home:
+                winner(round16[0]),
+
+            away:
+                winner(round16[1])
+
+        },
+
+        {
+            home:
+                winner(round16[2]),
+
+            away:
+                winner(round16[3])
+
+        },
+
+        {
+            home:
+                winner(round16[4]),
+
+            away:
+                winner(round16[5])
+
+        },
+
+        {
+            home:
+                winner(round16[6]),
+
+            away:
+                winner(round16[7])
+
+        }
+
+    ];
+
+}
+
+function generateSemiFinals(quarters){
+
+    return [
+
+        {
+
+            home:
+                winner(quarters[0]),
+
+            away:
+                winner(quarters[1])
+
+        },
+
+        {
+
+            home:
+                winner(quarters[2]),
+
+            away:
+                winner(quarters[3])
+
+        }
+
+    ];
+
+}
+
+function generateFinal(semis){
+
+    return {
+
+        final: [
+
+            {
+
+                home:
+                    winner(semis[0]),
+
+                away:
+                    winner(semis[1])
+
+            }
+
+        ],
+
+        thirdPlace: [
+
+            {
+
+                home:
+                    loser(semis[0]),
+
+                away:
+                    loser(semis[1])
+
+            }
+
+        ]
+
+    };
+
+}
+
+function loser(match){
+
+    if(match.homeScore > match.awayScore)
+        return match.away;
+
+    return match.home;
+
+}
+

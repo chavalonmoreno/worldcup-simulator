@@ -1,33 +1,183 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simulador Mundial 2026</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Mundial 2026</title>
+
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <header>
-    <h1>Simulador del Mundial 2026</h1>
-    <p>Los partidos marcados en verde son resultados reales oficiales. Completa el resto para ver las llaves.</p>
-  </header>
+<header class="header">
+    <h1>🏆 Simulador Mundial 2026</h1>
+    <p>Predice los partidos restantes y descubre quién será campeón.</p>
+</header>
 
-  <main id="app">
-    <section id="groups-container">
-      <h2>Fase de Grupos</h2>
-      <div class="groups-grid" id="groups-grid">
+<div class="actions">
+    <button id="simulateBtn">
+        Simular Mundial
+    </button>
+
+    <button id="resetBtn">
+        Reiniciar Predicciones
+    </button>
+</div>
+
+<main>
+
+    <!-- ===================== -->
+    <!-- FASE DE GRUPOS -->
+    <!-- ===================== -->
+
+    <section id="groups-section">
+
+        <h2>Fase de Grupos</h2>
+
+        <div id="groups-container">
+            <!-- generado por JS -->
         </div>
+
     </section>
 
-    <section id="bracket-container">
-      <h2>Ronda de 32 (Dieciseisavos de Final)</h2>
-      <div class="bracket-grid" id="round-of-32">
-        </div>
-    </section>
-  </main>
+    <!-- ===================== -->
+    <!-- ELIMINACIÓN -->
+    <!-- ===================== -->
 
-  <script src="simulator.js"></script>
-  <script src="app.js"></script>
+    <section id="knockout-section">
+
+        <h2>Eliminación Directa</h2>
+
+        <div class="round">
+            <h3>16avos de Final</h3>
+            <div id="round32"></div>
+        </div>
+
+        <div class="round">
+            <h3>Octavos de Final</h3>
+            <div id="round16"></div>
+        </div>
+
+        <div class="round">
+            <h3>Cuartos de Final</h3>
+            <div id="quarterfinals"></div>
+        </div>
+
+        <div class="round">
+            <h3>Semifinales</h3>
+            <div id="semifinals"></div>
+        </div>
+
+        <div class="round">
+            <h3>Tercer Lugar</h3>
+            <div id="thirdPlace"></div>
+        </div>
+
+        <div class="round">
+            <h3>Final</h3>
+            <div id="final"></div>
+        </div>
+
+    </section>
+
+</main>
+
+<!-- ================================================= -->
+<!-- TEMPLATE GRUPO -->
+<!-- ================================================= -->
+
+<template id="groupTemplate">
+
+    <div class="group-card">
+
+        <h3 class="group-name"></h3>
+
+        <table class="standings-table">
+
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Equipo</th>
+                <th>Pts</th>
+                <th>DG</th>
+                <th>GF</th>
+                <th>GC</th>
+            </tr>
+            </thead>
+
+            <tbody class="group-table-body">
+            </tbody>
+
+        </table>
+
+        <div class="matches-container">
+        </div>
+
+    </div>
+
+</template>
+
+<!-- ================================================= -->
+<!-- TEMPLATE PARTIDO -->
+<!-- ================================================= -->
+
+<template id="matchTemplate">
+
+    <div class="match-card">
+
+        <div class="match-id"></div>
+
+        <div class="team-row">
+
+            <span class="team-name home-name">
+                Local
+            </span>
+
+            <input
+                class="score-input home-score"
+                type="number"
+                min="0">
+
+        </div>
+
+        <div class="team-row">
+
+            <span class="team-name away-name">
+                Visitante
+            </span>
+
+            <input
+                class="score-input away-score"
+                type="number"
+                min="0">
+
+        </div>
+
+    </div>
+
+</template>
+
+<!-- ================================================= -->
+<!-- TEMPLATE PARTIDO ELIMINACIÓN -->
+<!-- ================================================= -->
+
+<template id="knockoutMatchTemplate">
+
+    <div class="knockout-match">
+
+        <div class="team knockout-home">
+            TBD
+        </div>
+
+        <div class="team knockout-away">
+            TBD
+        </div>
+
+    </div>
+
+</template>
+
+<script src="app.js"></script>
+
 </body>
 </html>
