@@ -1,18 +1,68 @@
 {
     "teams": [
-        {
-            "MEX": {
-            "name": "México",
-            "group": "A",
-            "fifaRanking": 15
-            }
-        }
-    ]
-         
+        { "MEX": { "name": "México", "group": "A", "fifaRanking": 15 } },
+        { "RSA": { "name": "Sudáfrica", "group": "A", "fifaRanking": 56 } },
+        { "KOR": { "name": "Corea del Sur", "group": "A", "fifaRanking": 23 } },
+        { "CZE": { "name": "República Checa", "group": "A", "fifaRanking": 39 } },
     
-    ,
-    "matches" : [
-        {
+        { "CAN": { "name": "Canadá", "group": "B", "fifaRanking": 30 } },
+        { "BIH": { "name": "Bosnia y Herzegovina", "group": "B", "fifaRanking": 72 } },
+        { "QAT": { "name": "Catar", "group": "B", "fifaRanking": 53 } },
+        { "SUI": { "name": "Suiza", "group": "B", "fifaRanking": 20 } },
+    
+        { "BRA": { "name": "Brasil", "group": "C", "fifaRanking": 5 } },
+        { "MAR": { "name": "Marruecos", "group": "C", "fifaRanking": 12 } },
+        { "HAI": { "name": "Haití", "group": "C", "fifaRanking": 83 } },
+        { "SCO": { "name": "Escocia", "group": "C", "fifaRanking": 44 } },
+    
+        { "USA": { "name": "Estados Unidos", "group": "D", "fifaRanking": 16 } },
+        { "PAR": { "name": "Paraguay", "group": "D", "fifaRanking": 48 } },
+        { "AUS": { "name": "Australia", "group": "D", "fifaRanking": 26 } },
+        { "TUR": { "name": "Turquía", "group": "D", "fifaRanking": 28 } },
+    
+        { "GER": { "name": "Alemania", "group": "E", "fifaRanking": 10 } },
+        { "CUW": { "name": "Curazao", "group": "E", "fifaRanking": 90 } },
+        { "CIV": { "name": "Costa de Marfil", "group": "E", "fifaRanking": 41 } },
+        { "ECU": { "name": "Ecuador", "group": "E", "fifaRanking": 24 } },
+    
+        { "NED": { "name": "Países Bajos", "group": "F", "fifaRanking": 7 } },
+        { "JPN": { "name": "Japón", "group": "F", "fifaRanking": 17 } },
+        { "SWE": { "name": "Suecia", "group": "F", "fifaRanking": 27 } },
+        { "TUN": { "name": "Túnez", "group": "F", "fifaRanking": 49 } },
+    
+        { "IRN": { "name": "Irán", "group": "G", "fifaRanking": 18 } },
+        { "NZL": { "name": "Nueva Zelanda", "group": "G", "fifaRanking": 89 } },
+        { "BEL": { "name": "Bélgica", "group": "G", "fifaRanking": 8 } },
+        { "EGY": { "name": "Egipto", "group": "G", "fifaRanking": 34 } },
+    
+        { "ESP": { "name": "España", "group": "H", "fifaRanking": 2 } },
+        { "CPV": { "name": "Cabo Verde", "group": "H", "fifaRanking": 73 } },
+        { "KSA": { "name": "Arabia Saudita", "group": "H", "fifaRanking": 58 } },
+        { "URU": { "name": "Uruguay", "group": "H", "fifaRanking": 13 } },
+    
+        { "FRA": { "name": "Francia", "group": "I", "fifaRanking": 3 } },
+        { "SEN": { "name": "Senegal", "group": "I", "fifaRanking": 19 } },
+        { "IRQ": { "name": "Irak", "group": "I", "fifaRanking": 59 } },
+        { "NOR": { "name": "Noruega", "group": "I", "fifaRanking": 38 } },
+    
+        { "ARG": { "name": "Argentina", "group": "J", "fifaRanking": 1 } },
+        { "ALG": { "name": "Argelia", "group": "J", "fifaRanking": 36 } },
+        { "AUT": { "name": "Austria", "group": "J", "fifaRanking": 22 } },
+        { "JOR": { "name": "Jordania", "group": "J", "fifaRanking": 64 } },
+    
+        { "POR": { "name": "Portugal", "group": "K", "fifaRanking": 6 } },
+        { "COD": { "name": "RD Congo", "group": "K", "fifaRanking": 61 } },
+        { "UZB": { "name": "Uzbekistán", "group": "K", "fifaRanking": 57 } },
+        { "COL": { "name": "Colombia", "group": "K", "fifaRanking": 14 } },
+    
+        { "ENG": { "name": "Inglaterra", "group": "L", "fifaRanking": 4 } },
+        { "CRO": { "name": "Croacia", "group": "L", "fifaRanking": 11 } },
+        { "GHA": { "name": "Ghana", "group": "L", "fifaRanking": 76 } },
+        { "PAN": { "name": "Panamá", "group": "L", "fifaRanking": 33 } }
+      ],
+    
+        "matches": [
+          {
             "id": "A1",
             "stage": "group",
             "group": "A",
@@ -22,9 +72,1041 @@
             "awayScore": 0,
             "isReal": true,
             "fairPlay": {
-              "MEX": { "Y": 1, "R": 1 },
-              "RSA": { "Y": 2, "R": 2 }
+              "MEX": { "Y": 1, "R": 0 },
+              "RSA": { "Y": 2, "R": 0 }
             }
-        }
+          },
+          {
+            "id": "A2",
+            "stage": "group",
+            "group": "A",
+            "home": "KOR",
+            "away": "CZE",
+            "homeScore": 1,
+            "awayScore": 1,
+            "isReal": true,
+            "fairPlay": {
+              "KOR": { "Y": 2, "R": 0 },
+              "CZE": { "Y": 1, "R": 0 }
+            }
+          },
+          {
+            "id": "A3",
+            "stage": "group",
+            "group": "A",
+            "home": "MEX",
+            "away": "KOR",
+            "homeScore": 1,
+            "awayScore": 0,
+            "isReal": true,
+            "fairPlay": {
+              "MEX": { "Y": 2, "R": 0 },
+              "KOR": { "Y": 1, "R": 0 }
+            }
+          },
+          {
+            "id": "A4",
+            "stage": "group",
+            "group": "A",
+            "home": "RSA",
+            "away": "CZE",
+            "homeScore": 0,
+            "awayScore": 2,
+            "isReal": true,
+            "fairPlay": {
+              "RSA": { "Y": 3, "R": 0 },
+              "CZE": { "Y": 1, "R": 0 }
+            }
+          },
+          {
+            "id": "A5",
+            "stage": "group",
+            "group": "A",
+            "home": "MEX",
+            "away": "CZE",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+              "MEX": { "Y": 0, "R": 0 },
+              "CZE": { "Y": 0, "R": 0 }
+            }
+          },
+          {
+            "id": "A6",
+            "stage": "group",
+            "group": "A",
+            "home": "RSA",
+            "away": "KOR",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+              "RSA": { "Y": 0, "R": 0 },
+              "KOR": { "Y": 0, "R": 0 }
+            }
+          },
+       
+        {
+            "id": "B1",
+            "stage": "group",
+            "group": "B",
+            "home": "CAN",
+            "away": "BIH",
+            "homeScore": 2,
+            "awayScore": 1,
+            "isReal": true,
+            "fairPlay": {
+            "CAN": { "Y": 2, "R": 0 },
+            "BIH": { "Y": 3, "R": 0 }
+            }
+        },
+        {
+            "id": "B2",
+            "stage": "group",
+            "group": "B",
+            "home": "QAT",
+            "away": "SUI",
+            "homeScore": 1,
+            "awayScore": 4,
+            "isReal": true,
+            "fairPlay": {
+            "QAT": { "Y": 2, "R": 0 },
+            "SUI": { "Y": 1, "R": 0 }
+            }
+        },
+        {
+            "id": "B3",
+            "stage": "group",
+            "group": "B",
+            "home": "SUI",
+            "away": "BIH",
+            "homeScore": 4,
+            "awayScore": 1,
+            "isReal": true,
+            "fairPlay": {
+            "SUI": { "Y": 1, "R": 0 },
+            "BIH": { "Y": 2, "R": 0 }
+            }
+        },
+        {
+            "id": "B4",
+            "stage": "group",
+            "group": "B",
+            "home": "CAN",
+            "away": "QAT",
+            "homeScore": 6,
+            "awayScore": 0,
+            "isReal": true,
+            "fairPlay": {
+            "CAN": { "Y": 0, "R": 0 },
+            "QAT": { "Y": 3, "R": 2 }
+            }
+        },
+        {
+            "id": "B5",
+            "stage": "group",
+            "group": "B",
+            "home": "SUI",
+            "away": "CAN",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "SUI": { "Y": 0, "R": 0 },
+            "CAN": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "B6",
+            "stage": "group",
+            "group": "B",
+            "home": "BIH",
+            "away": "QAT",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "BIH": { "Y": 0, "R": 0 },
+            "QAT": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "C1",
+            "stage": "group",
+            "group": "C",
+            "home": "BRA",
+            "away": "MAR",
+            "homeScore": 1,
+            "awayScore": 1,
+            "isReal": true,
+            "fairPlay": {
+            "BRA": { "Y": 2, "R": 0 },
+            "MAR": { "Y": 1, "R": 0 }
+            }
+        },
+        {
+            "id": "C2",
+            "stage": "group",
+            "group": "C",
+            "home": "HAI",
+            "away": "SCO",
+            "homeScore": 0,
+            "awayScore": 1,
+            "isReal": true,
+            "fairPlay": {
+            "HAI": { "Y": 3, "R": 0 },
+            "SCO": { "Y": 2, "R": 0 }
+            }
+        },
+        {
+            "id": "C3",
+            "stage": "group",
+            "group": "C",
+            "home": "SCO",
+            "away": "MAR",
+            "homeScore": 0,
+            "awayScore": 1,
+            "isReal": true,
+            "fairPlay": {
+            "SCO": { "Y": 2, "R": 0 },
+            "MAR": { "Y": 1, "R": 0 }
+            }
+        },
+        {
+            "id": "C4",
+            "stage": "group",
+            "group": "C",
+            "home": "BRA",
+            "away": "HAI",
+            "homeScore": 3,
+            "awayScore": 0,
+            "isReal": true,
+            "fairPlay": {
+            "BRA": { "Y": 1, "R": 0 },
+            "HAI": { "Y": 2, "R": 0 }
+            }
+        },
+        {
+            "id": "C5",
+            "stage": "group",
+            "group": "C",
+            "home": "BRA",
+            "away": "SCO",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "BRA": { "Y": 0, "R": 0 },
+            "SCO": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "C6",
+            "stage": "group",
+            "group": "C",
+            "home": "MAR",
+            "away": "HAI",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "MAR": { "Y": 0, "R": 0 },
+            "HAI": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "D1",
+            "stage": "group",
+            "group": "D",
+            "home": "USA",
+            "away": "PAR",
+            "homeScore": 4,
+            "awayScore": 1,
+            "isReal": true,
+            "fairPlay": {
+            "USA": { "Y": 2, "R": 0 },
+            "PAR": { "Y": 3, "R": 0 }
+            }
+        },
+        {
+            "id": "D2",
+            "stage": "group",
+            "group": "D",
+            "home": "AUS",
+            "away": "TUR",
+            "homeScore": 2,
+            "awayScore": 0,
+            "isReal": true,
+            "fairPlay": {
+            "AUS": { "Y": 1, "R": 0 },
+            "TUR": { "Y": 2, "R": 0 }
+            }
+        },
+        {
+            "id": "D3",
+            "stage": "group",
+            "group": "D",
+            "home": "USA",
+            "away": "AUS",
+            "homeScore": 2,
+            "awayScore": 0,
+            "isReal": true,
+            "fairPlay": {
+            "USA": { "Y": 3, "R": 0 },
+            "AUS": { "Y": 4, "R": 0 }
+            }
+        },
+        {
+            "id": "D4",
+            "stage": "group",
+            "group": "D",
+            "home": "TUR",
+            "away": "PAR",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "TUR": { "Y": 0, "R": 0 },
+            "PAR": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "D5",
+            "stage": "group",
+            "group": "D",
+            "home": "TUR",
+            "away": "USA",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "TUR": { "Y": 0, "R": 0 },
+            "USA": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "D6",
+            "stage": "group",
+            "group": "D",
+            "home": "PAR",
+            "away": "AUS",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "PAR": { "Y": 0, "R": 0 },
+            "AUS": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "E1",
+            "stage": "group",
+            "group": "E",
+            "home": "GER",
+            "away": "CUW",
+            "homeScore": 7,
+            "awayScore": 1,
+            "isReal": true,
+            "fairPlay": {
+            "GER": { "Y": 1, "R": 0 },
+            "CUW": { "Y": 2, "R": 0 }
+            }
+        },
+        {
+            "id": "E2",
+            "stage": "group",
+            "group": "E",
+            "home": "CIV",
+            "away": "ECU",
+            "homeScore": 1,
+            "awayScore": 0,
+            "isReal": true,
+            "fairPlay": {
+            "CIV": { "Y": 2, "R": 0 },
+            "ECU": { "Y": 1, "R": 0 }
+            }
+        },
+        {
+            "id": "E3",
+            "stage": "group",
+            "group": "E",
+            "home": "GER",
+            "away": "CIV",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "GER": { "Y": 0, "R": 0 },
+            "CIV": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "E4",
+            "stage": "group",
+            "group": "E",
+            "home": "ECU",
+            "away": "CUW",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "ECU": { "Y": 0, "R": 0 },
+            "CUW": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "E5",
+            "stage": "group",
+            "group": "E",
+            "home": "CUW",
+            "away": "CIV",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "CUW": { "Y": 0, "R": 0 },
+            "CIV": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "E6",
+            "stage": "group",
+            "group": "E",
+            "home": "ECU",
+            "away": "GER",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "ECU": { "Y": 0, "R": 0 },
+            "GER": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "F1",
+            "stage": "group",
+            "group": "F",
+            "home": "NED",
+            "away": "JPN",
+            "homeScore": 2,
+            "awayScore": 2,
+            "isReal": true,
+            "fairPlay": {
+            "NED": { "Y": 1, "R": 0 },
+            "JPN": { "Y": 2, "R": 0 }
+            }
+        },
+        {
+            "id": "F2",
+            "stage": "group",
+            "group": "F",
+            "home": "SWE",
+            "away": "TUN",
+            "homeScore": 5,
+            "awayScore": 1,
+            "isReal": true,
+            "fairPlay": {
+            "SWE": { "Y": 1, "R": 0 },
+            "TUN": { "Y": 2, "R": 0 }
+            }
+        },
+        {
+            "id": "F3",
+            "stage": "group",
+            "group": "F",
+            "home": "NED",
+            "away": "SWE",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "NED": { "Y": 0, "R": 0 },
+            "SWE": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "F4",
+            "stage": "group",
+            "group": "F",
+            "home": "TUN",
+            "away": "JPN",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "TUN": { "Y": 0, "R": 0 },
+            "JPN": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "F5",
+            "stage": "group",
+            "group": "F",
+            "home": "JPN",
+            "away": "SWE",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "JPN": { "Y": 0, "R": 0 },
+            "SWE": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "F6",
+            "stage": "group",
+            "group": "F",
+            "home": "TUN",
+            "away": "NED",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "TUN": { "Y": 0, "R": 0 },
+            "NED": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "G1",
+            "stage": "group",
+            "group": "G",
+            "home": "IRN",
+            "away": "NZL",
+            "homeScore": 2,
+            "awayScore": 2,
+            "isReal": true,
+            "fairPlay": {
+            "IRN": { "Y": 2, "R": 0 },
+            "NZL": { "Y": 1, "R": 0 }
+            }
+        },
+        {
+            "id": "G2",
+            "stage": "group",
+            "group": "G",
+            "home": "BEL",
+            "away": "EGY",
+            "homeScore": 1,
+            "awayScore": 1,
+            "isReal": true,
+            "fairPlay": {
+            "BEL": { "Y": 1, "R": 0 },
+            "EGY": { "Y": 2, "R": 0 }
+            }
+        },
+        {
+            "id": "G3",
+            "stage": "group",
+            "group": "G",
+            "home": "BEL",
+            "away": "IRN",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "BEL": { "Y": 0, "R": 0 },
+            "IRN": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "G4",
+            "stage": "group",
+            "group": "G",
+            "home": "NZL",
+            "away": "EGY",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "NZL": { "Y": 0, "R": 0 },
+            "EGY": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "G5",
+            "stage": "group",
+            "group": "G",
+            "home": "EGY",
+            "away": "IRN",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "EGY": { "Y": 0, "R": 0 },
+            "IRN": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "G6",
+            "stage": "group",
+            "group": "G",
+            "home": "NZL",
+            "away": "BEL",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "NZL": { "Y": 0, "R": 0 },
+            "BEL": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "H1",
+            "stage": "group",
+            "group": "H",
+            "home": "ESP",
+            "away": "CPV",
+            "homeScore": 0,
+            "awayScore": 0,
+            "isReal": true,
+            "fairPlay": {
+            "ESP": { "Y": 1, "R": 0 },
+            "CPV": { "Y": 2, "R": 0 }
+            }
+        },
+        {
+            "id": "H2",
+            "stage": "group",
+            "group": "H",
+            "home": "KSA",
+            "away": "URU",
+            "homeScore": 1,
+            "awayScore": 3,
+            "isReal": true,
+            "fairPlay": {
+            "KSA": { "Y": 2, "R": 0 },
+            "URU": { "Y": 1, "R": 0 }
+            }
+        },
+        {
+            "id": "H3",
+            "stage": "group",
+            "group": "H",
+            "home": "URU",
+            "away": "CPV",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "URU": { "Y": 0, "R": 0 },
+            "CPV": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "H4",
+            "stage": "group",
+            "group": "H",
+            "home": "ESP",
+            "away": "KSA",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "ESP": { "Y": 0, "R": 0 },
+            "KSA": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "H5",
+            "stage": "group",
+            "group": "H",
+            "home": "CPV",
+            "away": "KSA",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "CPV": { "Y": 0, "R": 0 },
+            "KSA": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "H6",
+            "stage": "group",
+            "group": "H",
+            "home": "URU",
+            "away": "ESP",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "URU": { "Y": 0, "R": 0 },
+            "ESP": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "I1",
+            "stage": "group",
+            "group": "I",
+            "home": "FRA",
+            "away": "SEN",
+            "homeScore": 3,
+            "awayScore": 1,
+            "isReal": true,
+            "fairPlay": {
+            "FRA": { "Y": 1, "R": 0 },
+            "SEN": { "Y": 2, "R": 0 }
+            }
+        },
+        {
+            "id": "I2",
+            "stage": "group",
+            "group": "I",
+            "home": "IRQ",
+            "away": "NOR",
+            "homeScore": 1,
+            "awayScore": 4,
+            "isReal": true,
+            "fairPlay": {
+            "IRQ": { "Y": 3, "R": 0 },
+            "NOR": { "Y": 1, "R": 0 }
+            }
+        },
+        {
+            "id": "I3",
+            "stage": "group",
+            "group": "I",
+            "home": "NOR",
+            "away": "SEN",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "NOR": { "Y": 0, "R": 0 },
+            "SEN": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "I4",
+            "stage": "group",
+            "group": "I",
+            "home": "FRA",
+            "away": "IRQ",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "FRA": { "Y": 0, "R": 0 },
+            "IRQ": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "I5",
+            "stage": "group",
+            "group": "I",
+            "home": "NOR",
+            "away": "FRA",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "NOR": { "Y": 0, "R": 0 },
+            "FRA": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "I6",
+            "stage": "group",
+            "group": "I",
+            "home": "SEN",
+            "away": "IRQ",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "SEN": { "Y": 0, "R": 0 },
+            "IRQ": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "J1",
+            "stage": "group",
+            "group": "J",
+            "home": "ARG",
+            "away": "ALG",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "ARG": { "Y": 0, "R": 0 },
+            "ALG": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "J2",
+            "stage": "group",
+            "group": "J",
+            "home": "AUT",
+            "away": "JOR",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "AUT": { "Y": 0, "R": 0 },
+            "JOR": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "J3",
+            "stage": "group",
+            "group": "J",
+            "home": "ARG",
+            "away": "AUT",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "ARG": { "Y": 0, "R": 0 },
+            "AUT": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "J4",
+            "stage": "group",
+            "group": "J",
+            "home": "JOR",
+            "away": "ALG",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "JOR": { "Y": 0, "R": 0 },
+            "ALG": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "J5",
+            "stage": "group",
+            "group": "J",
+            "home": "JOR",
+            "away": "ARG",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "JOR": { "Y": 0, "R": 0 },
+            "ARG": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "J6",
+            "stage": "group",
+            "group": "J",
+            "home": "ALG",
+            "away": "AUT",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "ALG": { "Y": 0, "R": 0 },
+            "AUT": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "K1",
+            "stage": "group",
+            "group": "K",
+            "home": "POR",
+            "away": "COD",
+            "homeScore": 2,
+            "awayScore": 0,
+            "isReal": true,
+            "fairPlay": {
+            "POR": { "Y": 1, "R": 0 },
+            "COD": { "Y": 3, "R": 0 }
+            }
+        },
+        {
+            "id": "K2",
+            "stage": "group",
+            "group": "K",
+            "home": "UZB",
+            "away": "COL",
+            "homeScore": 1,
+            "awayScore": 3,
+            "isReal": true,
+            "fairPlay": {
+            "UZB": { "Y": 2, "R": 0 },
+            "COL": { "Y": 1, "R": 0 }
+            }
+        },
+        {
+            "id": "K3",
+            "stage": "group",
+            "group": "K",
+            "home": "POR",
+            "away": "UZB",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "POR": { "Y": 0, "R": 0 },
+            "UZB": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "K4",
+            "stage": "group",
+            "group": "K",
+            "home": "COL",
+            "away": "COD",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "COL": { "Y": 0, "R": 0 },
+            "COD": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "K5",
+            "stage": "group",
+            "group": "K",
+            "home": "COL",
+            "away": "POR",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "COL": { "Y": 0, "R": 0 },
+            "POR": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "K6",
+            "stage": "group",
+            "group": "K",
+            "home": "COD",
+            "away": "UZB",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "COD": { "Y": 0, "R": 0 },
+            "UZB": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "L1",
+            "stage": "group",
+            "group": "L",
+            "home": "ENG",
+            "away": "CRO",
+            "homeScore": 4,
+            "awayScore": 2,
+            "isReal": true,
+            "fairPlay": {
+            "ENG": { "Y": 1, "R": 0 },
+            "CRO": { "Y": 2, "R": 0 }
+            }
+        },
+        {
+            "id": "L2",
+            "stage": "group",
+            "group": "L",
+            "home": "GHA",
+            "away": "PAN",
+            "homeScore": 1,
+            "awayScore": 1,
+            "isReal": true,
+            "fairPlay": {
+            "GHA": { "Y": 2, "R": 0 },
+            "PAN": { "Y": 3, "R": 0 }
+            }
+        },
+        {
+            "id": "L3",
+            "stage": "group",
+            "group": "L",
+            "home": "ENG",
+            "away": "GHA",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "ENG": { "Y": 0, "R": 0 },
+            "GHA": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "L4",
+            "stage": "group",
+            "group": "L",
+            "home": "PAN",
+            "away": "CRO",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "PAN": { "Y": 0, "R": 0 },
+            "CRO": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "L5",
+            "stage": "group",
+            "group": "L",
+            "home": "PAN",
+            "away": "ENG",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "PAN": { "Y": 0, "R": 0 },
+            "ENG": { "Y": 0, "R": 0 }
+            }
+        },
+        {
+            "id": "L6",
+            "stage": "group",
+            "group": "L",
+            "home": "CRO",
+            "away": "GHA",
+            "homeScore": null,
+            "awayScore": null,
+            "isReal": false,
+            "fairPlay": {
+            "CRO": { "Y": 0, "R": 0 },
+            "GHA": { "Y": 0, "R": 0 }
+            }
+        },
+        { "id": "R32-1",  "stage": "round32", "home": "2A",  "away": "2B",         "homeScore": null, "awayScore": null, "isReal": false },
+        { "id": "R32-2",  "stage": "round32", "home": "1E",  "away": "3ABCDF",     "homeScore": null, "awayScore": null, "isReal": false },
+        { "id": "R32-3",  "stage": "round32", "home": "1F",  "away": "2C",         "homeScore": null, "awayScore": null, "isReal": false },
+        { "id": "R32-4",  "stage": "round32", "home": "1C",  "away": "2F",         "homeScore": null, "awayScore": null, "isReal": false },
+        { "id": "R32-5",  "stage": "round32", "home": "1I",  "away": "3CDFGH",     "homeScore": null, "awayScore": null, "isReal": false },
+        { "id": "R32-6",  "stage": "round32", "home": "2E",  "away": "2I",         "homeScore": null, "awayScore": null, "isReal": false },
+        { "id": "R32-7",  "stage": "round32", "home": "1A",  "away": "3CEFHI",     "homeScore": null, "awayScore": null, "isReal": false },
+        { "id": "R32-8",  "stage": "round32", "home": "1L",  "away": "3EHIJK",     "homeScore": null, "awayScore": null, "isReal": false },
+        { "id": "R32-9",  "stage": "round32", "home": "1D",  "away": "3BEFIJ",     "homeScore": null, "awayScore": null, "isReal": false },
+        { "id": "R32-10", "stage": "round32", "home": "1G",  "away": "3AEHIJ",     "homeScore": null, "awayScore": null, "isReal": false },
+        { "id": "R32-11", "stage": "round32", "home": "2K",  "away": "2L",         "homeScore": null, "awayScore": null, "isReal": false },
+        { "id": "R32-12", "stage": "round32", "home": "1H",  "away": "2J",         "homeScore": null, "awayScore": null, "isReal": false },
+        { "id": "R32-13", "stage": "round32", "home": "1B",  "away": "3EFGIJ",     "homeScore": null, "awayScore": null, "isReal": false },
+        { "id": "R32-14", "stage": "round32", "home": "1J",  "away": "2H",         "homeScore": null, "awayScore": null, "isReal": false },
+        { "id": "R32-15", "stage": "round32", "home": "1K",  "away": "3DEIJL",     "homeScore": null, "awayScore": null, "isReal": false },
+        { "id": "R32-16", "stage": "round32", "home": "2D",  "away": "2G",         "homeScore": null, "awayScore": null, "isReal": false },
+
+        { "id": "R16-1", "stage": "round16", "home": "W-R32-1",  "away": "W-R32-3",  "homeScore": null, "awayScore": null, "isReal": false },
+        { "id": "R16-2", "stage": "round16", "home": "W-R32-2",  "away": "W-R32-5",  "homeScore": null, "awayScore": null, "isReal": false },
+        { "id": "R16-3", "stage": "round16", "home": "W-R32-4",  "away": "W-R32-6",  "homeScore": null, "awayScore": null, "isReal": false },
+        { "id": "R16-4", "stage": "round16", "home": "W-R32-7",  "away": "W-R32-8",  "homeScore": null, "awayScore": null, "isReal": false },
+        { "id": "R16-5", "stage": "round16", "home": "W-R32-9",  "away": "W-R32-10", "homeScore": null, "awayScore": null, "isReal": false },
+        { "id": "R16-6", "stage": "round16", "home": "W-R32-11", "away": "W-R32-12", "homeScore": null, "awayScore": null, "isReal": false },
+        { "id": "R16-7", "stage": "round16", "home": "W-R32-13", "away": "W-R32-16", "homeScore": null, "awayScore": null, "isReal": false },
+        { "id": "R16-8", "stage": "round16", "home": "W-R32-14", "away": "W-R32-15", "homeScore": null, "awayScore": null, "isReal": false },
+
+        { "id": "QF-1", "stage": "quarterfinal", "home": "W-R16-1", "away": "W-R16-2", "homeScore": null, "awayScore": null, "isReal": false },
+        { "id": "QF-2", "stage": "quarterfinal", "home": "W-R16-3", "away": "W-R16-4", "homeScore": null, "awayScore": null, "isReal": false },
+        { "id": "QF-3", "stage": "quarterfinal", "home": "W-R16-5", "away": "W-R16-6", "homeScore": null, "awayScore": null, "isReal": false },
+        { "id": "QF-4", "stage": "quarterfinal", "home": "W-R16-7", "away": "W-R16-8", "homeScore": null, "awayScore": null, "isReal": false },
+
+        { "id": "SF-1", "stage": "semifinal", "home": "W-QF-1", "away": "W-QF-2", "homeScore": null, "awayScore": null, "isReal": false },
+        { "id": "SF-2", "stage": "semifinal", "home": "W-QF-3", "away": "W-QF-4", "homeScore": null, "awayScore": null, "isReal": false },
+
+        { "id": "TPL-1", "stage": "third_place", "home": "L-SF-1", "away": "L-SF-2", "homeScore": null, "awayScore": null, "isReal": false },
+
+        { "id": "F-1", "stage": "final", "home": "W-SF-1", "away": "W-SF-2", "homeScore": null, "awayScore": null, "isReal": false }
     ]
 }
